@@ -15,13 +15,14 @@ class App extends React.Component {
     this.setState({trellies: trelliesObject});
   }
 
-  onActivityAdded = () => {
+  onActivityAdded = (inputValue, id) => {
     let oldState = this.state.trellies;
     let newState = {
       label: "Vandaag",
-      description: "Geadd door enter te drukken"
+      description: inputValue,
+      id: oldState[id - 1].activities.length + 1
     }
-    oldState[0].activities.push(newState);
+    oldState[id - 1].activities.push(newState);
     this.setState({trellies: oldState});
   }
 
@@ -30,7 +31,7 @@ class App extends React.Component {
 
   render() {
     let render = this.state.trellies.map(object => {
-      return <Trellie onActivityAdded={this.onActivityAdded} key={object.id} trellie={object} />
+      return <Trellie id={object.id} onActivityAdded={this.onActivityAdded} key={object.id} trellie={object} />
     });
     return (
       <>

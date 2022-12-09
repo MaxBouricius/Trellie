@@ -4,18 +4,22 @@ import React from "react";
 
 class Input extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {inputValue: "Hello!"}
+        this.state = { inputValue: "" }
     }
 
     onInputSubmit = (event) => {
         event.preventDefault();
-        this.props.onActivityAdded();
+        if (this.state.inputValue !== "") {
+            this.props.onActivityAdded(this.state.inputValue);
+            this.setState({ inputValue: "" })
+        }
+
     }
 
     onInputChange = (event) => {
-        this.setState({inputValue: event.target.value});
+        this.setState({ inputValue: event.target.value });
     }
 
     render() {
