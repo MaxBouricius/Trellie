@@ -1,7 +1,7 @@
 import "./Trellie.css"
 import Activity from "../Activity/Activity";
 import Input from "../Input/Input";
-const Trellie = ({onActivityAdded, trellie }) =>{
+const Trellie = ({id, onActivityAdded, trellie }) =>{
     
     let listItemsToBeRendered = trellie.activities.map(object => {
         return(
