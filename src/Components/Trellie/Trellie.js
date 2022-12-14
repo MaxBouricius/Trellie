@@ -19,7 +19,7 @@ const Trellie = ({id, onActivityAdded, trellie }) =>{
                 <header className="trellie__header">
                     <h2 className="trellie__heading">{trellie.title || "Placeholder"}</h2>
                     <div className="trellie__headerWrapper">
-                    <div className="trellie__number">{trellie.count || "?"}</div>
+                    <div className="trellie__number">{trellie.activities.length || "?"}</div>
                     <button className="trellie__edit">...</button>
                     </div>
 
