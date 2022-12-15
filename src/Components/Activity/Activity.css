@@ -9,9 +9,29 @@
     
 }
 
-.activity__label{
+.activity__label--green{
     font-size: 90%;
     background: #389237;
+    width: max-content;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    color: #eee;
+    font-weight: 400;
+}
+
+.activity__label--orange{
+    font-size: 90%;
+    background: #e0ad02;
+    width: max-content;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    color: #eee;
+    font-weight: 400;
+}
+
+.activity__label--red{
+    font-size: 90%;
+    background: #eb3e13;
     width: max-content;
     padding: 0.2rem 0.5rem;
     border-radius: 0.3rem;
