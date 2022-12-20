@@ -1,5 +1,5 @@
-import "./Input.css"
-
+import "./Input.css";
+import {connect} from "react-redux";
 import React from "react";
 
 class Input extends React.Component {
