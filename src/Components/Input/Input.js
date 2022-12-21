@@ -9,6 +9,8 @@ class Input extends React.Component {
         this.state = { inputValue: "" }
     }
 
+    
+
     onInputSubmit = (event) => {
         event.preventDefault();
         if (this.state.inputValue !== "") {
@@ -33,4 +35,12 @@ class Input extends React.Component {
 
 }
 
-export default Input;
+const mapStatetoProps = (state) =>{
+    return{
+        inputValue: state,
+    }
+    
+}
+
+export default connect(mapStatetoProps)(Input);
+

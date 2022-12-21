@@ -7,11 +7,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 /* Own */
 import App from './App/App';
-import MyReducer from './Reducers/Reducers';
+import myReducer from './Reducers/Reducers';
 
 
 
-const store = createStore(MyReducer);
+const store = createStore(myReducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
