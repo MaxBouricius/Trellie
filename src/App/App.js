@@ -7,22 +7,23 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.setTrelliesFromRedux(trelliesObject);
   }
 
   onActivityAdded = (inputValue, id) => {
-    let oldState = this.props.trelliesFromRedux;
+    let oldState = [...this.props.trelliesFromRedux];
     let newState = {
       label: "Vandaag",
       description: inputValue,
       id: oldState[id - 1].activities.length + 1
     }
     oldState[id - 1].activities.push(newState);
+    this.props.setTrelliesFromRedux(oldState);
     //this.setState({trellies: oldState});
   }
 
@@ -42,15 +43,15 @@ class App extends React.Component {
 
 }
 
-const mapStateToProps = (state) =>{
-  return{
+const mapStateToProps = (state) => {
+  return {
     trelliesFromRedux: state.trellies,
   }
 }
 
-const mapDispatchToProps = (dispatch) =>{
-  return{
-    setTrelliesFromRedux: (payload)=> dispatch({type: "TRELLIES", payload:payload}),
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setTrelliesFromRedux: (payload) => dispatch({ type: "TRELLIES", payload: payload })
   }
 }
 

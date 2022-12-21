@@ -1,41 +1,35 @@
 import "./Input.css";
-import { connect } from "react-redux";
+import React from "react";
 
-const Input = (props) => {
+class Input extends React.Component {
 
-    const onInputSubmit = (event) => {
+    constructor(props) {
+        super(props)
+        this.state = { inputValue: "" }
+    }
+
+
+    onInputSubmit = (event) => {
         event.preventDefault();
-        if (props.inputValueFromRedux !== "") {
-            props.onActivityAdded(props.inputValueFromRedux);
+        if (this.state.inputValue !== "") {
+            this.props.onActivityAdded(this.state.inputValue);
         }
 
     }
 
-    const onInputChange = (event) => {
-        props.setInputValueFromRedux(event.target.value);
+    onInputChange = (event) => {
+        this.setState({inputValue: event.target.value});
     }
 
-
-    return (
-        <form onSubmit={onInputSubmit} className="input">
-            <label htmlFor="input" className="input__label">Nieuwe activiteit</label>
-            <input onChange={onInputChange} id="input" className="input__input" type="text" value={props.inputValueFromRedux}></input>
-        </form>
-    );
-
-
-}
-
-const mapStatetoProps = (state) => {
-    return {
-        inputValueFromRedux: state.input,
-    }
-
-}
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        setInputValueFromRedux: (payload)=> dispatch({type: "TEST", payload: payload})
+    render() {
+        return (
+            <form onSubmit={this.onInputSubmit} className="input">
+                <label htmlFor="input" className="input__label">Nieuwe activiteit</label>
+                <input onChange={this.onInputChange} id="input" className="input__input" type="text" value={this.state.inputValue}></input>
+            </form>
+        );
     }
 }
-export default connect(mapStatetoProps,mapDispatchToProps)(Input);
+
+export default Input;
 
