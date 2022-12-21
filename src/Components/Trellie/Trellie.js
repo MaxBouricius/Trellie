@@ -9,9 +9,6 @@ const Trellie = ({id, onActivityAdded, trellie }) =>{
         );
     });
 
-    const onActivityAddedTrellie = (inputValue) => {
-        onActivityAdded(inputValue, id);
-    }
 
     return(
         <>
@@ -27,7 +24,7 @@ const Trellie = ({id, onActivityAdded, trellie }) =>{
                 <ul className="trellie__activities">
                     {listItemsToBeRendered}
                 </ul>
-                <Input onActivityAdded={onActivityAddedTrellie}/>
+                <Input id={id}/>
             </section>
         </>
     )
