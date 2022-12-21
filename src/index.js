@@ -7,11 +7,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 /* Own */
 import App from './App/App';
-import myReducer from './Reducers/Reducers';
+import reducers from './Reducers/reducers';
 
 
 
-const store = createStore(myReducer);
+const store = createStore(reducers);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +19,5 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-
   </React.StrictMode>
 );

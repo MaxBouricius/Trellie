@@ -1,46 +1,41 @@
 import "./Input.css";
-import {connect} from "react-redux";
-import React from "react";
+import { connect } from "react-redux";
 
-class Input extends React.Component {
+const Input = (props) => {
 
-    constructor(props) {
-        super(props);
-        this.state = { inputValue: "" }
-    }
-
-    
-
-    onInputSubmit = (event) => {
+    const onInputSubmit = (event) => {
         event.preventDefault();
-        if (this.state.inputValue !== "") {
-            this.props.onActivityAdded(this.state.inputValue);
-            this.setState({ inputValue: "" })
+        if (props.inputValueFromRedux !== "") {
+            props.onActivityAdded(props.inputValueFromRedux);
         }
 
     }
 
-    onInputChange = (event) => {
-        this.setState({ inputValue: event.target.value });
+    const onInputChange = (event) => {
+        props.setInputValueFromRedux(event.target.value);
     }
 
-    render() {
-        return (
-            <form onSubmit={this.onInputSubmit} className="input">
-                <label htmlFor="input" className="input__label">Nieuwe activiteit</label>
-                <input onChange={this.onInputChange} id="input" className="input__input" type="text" value={this.state.inputValue}></input>
-            </form>
-        );
-    }
+
+    return (
+        <form onSubmit={onInputSubmit} className="input">
+            <label htmlFor="input" className="input__label">Nieuwe activiteit</label>
+            <input onChange={onInputChange} id="input" className="input__input" type="text" value={props.inputValueFromRedux}></input>
+        </form>
+    );
+
 
 }
 
-const mapStatetoProps = (state) =>{
+const mapStatetoProps = (state) => {
+    return {
+        inputValueFromRedux: state.input,
+    }
+
+}
+const mapDispatchToProps = (dispatch) =>{
     return{
-        inputValue: state,
+        setInputValueFromRedux: (payload)=> dispatch({type: "TEST", payload: payload})
     }
-    
 }
-
-export default connect(mapStatetoProps)(Input);
+export default connect(mapStatetoProps,mapDispatchToProps)(Input);
 
